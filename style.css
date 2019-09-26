@@ -3,14 +3,6 @@
     padding: 0%
 }
 
-.clearfix::after {
-    content: '';
-    display: block;
-    clear: both
-}
-
-.slides {}
-
 .window {
     margin: 20px auto;
     border: 3px black solid;

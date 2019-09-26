@@ -10,7 +10,6 @@ setInterval(() => {
         .one('transitionend', (xxx) => {
             $(xxx.currentTarget).removeClass('leave').addClass('enter')
         })
-
     $('.images>img:nth-child(' + nLoop(n + 1, size) + ')').removeClass('enter').addClass('current')
     n += 1
 }, 2000);
