@@ -3,7 +3,7 @@ let size = $('.images>img').length
 initN(1)
 
 //自动无缝轮播
-setInterval(() => {
+let timer = setInterval(() => {
     makeLeave(getImg(n))
         .one('transitionend', (xxx) => {
             makeEnter($(xxx.currentTarget))
@@ -12,7 +12,21 @@ setInterval(() => {
     n += 1
 }, 2000);
 
-
+//修复轮播鬼畜bug
+$(document).on('visibilitychange', function () {
+    if (document.hidden) {
+        window.clearInterval(timer)
+    } else {
+        timer = setInterval(() => {
+            makeLeave(getImg(n))
+                .one('transitionend', (xxx) => {
+                    makeEnter($(xxx.currentTarget))
+                })
+            makeCurrent(getImg(n + 1))
+            n += 1
+        }, 2000);
+    }
+});
 
 //封装函数
 //初始化
